@@ -128,8 +128,8 @@ export function evaluateSimulation(timeSec: number, mode: SimMode = 'idle'): Sim
     return {
       side,
       shoulderYaw: side * (0.28 + 0.055 * pincerBoost * Math.sin(w * 2 + phaseShift)),
-      shoulderPitch: -0.14 + 0.045 * Math.sin(w * 3 + idx * 1.1),
-      elbowPitch: 0.42 + 0.07 * pincerBoost * Math.cos(w * 2 + idx * 0.5),
+      shoulderPitch: 0.14 + 0.04 * Math.sin(w * 3 + idx * 1.1),
+      elbowPitch: -0.38 + 0.07 * pincerBoost * Math.cos(w * 2 + idx * 0.5),
       wristRoll: side * (0.18 + 0.09 * Math.sin(w * 3 + phaseShift)),
       jawOpenAngle,
       loadPct: clamp(36 + 24 * jawOsc * (mode === 'pincer' ? 1.25 : 1.0), 15, 95)
@@ -137,7 +137,8 @@ export function evaluateSimulation(timeSec: number, mode: SimMode = 'idle'): Sim
   }) as [PincerPose, PincerPose];
 
   const tailBoost = mode === 'calibrate' ? 1.65 : 1.0;
-  const tailBaseCurve = [-0.42, -0.44, -0.40, -0.34, -0.26, 0.42];
+  // Positive X-rotation pitches the -Z tail segments upward and forward over the carapace
+  const tailBaseCurve = [0.46, 0.48, 0.45, 0.42, 0.38, 0.34];
   const tailSegments: TailSegmentPose[] = tailBaseCurve.map((basePitch, i) => {
     const segRatio = (i + 1) / 6;
     const pitch = basePitch + 0.045 * tailBoost * Math.sin(w * 3 - i * 0.45);
@@ -147,12 +148,12 @@ export function evaluateSimulation(timeSec: number, mode: SimMode = 'idle'): Sim
     return { index: i, pitch, yaw, roll, loadPct };
   });
 
-  const stingerPitch = 0.52 + 0.14 * tailBoost * Math.sin(w * 4 + 0.4);
+  const stingerPitch = 0.28 + 0.14 * tailBoost * Math.sin(w * 4 + 0.4);
   const stingerYaw = 0.12 * tailBoost * Math.sin(w * 5 - 0.3);
 
   const cameraAzimuth = w + 0.65;
-  const cameraElevation = 0.36 + 0.045 * Math.sin(w * 2);
-  const cameraDistance = 4.35 + 0.12 * Math.cos(w * 2);
+  const cameraElevation = 0.34 + 0.04 * Math.sin(w * 2);
+  const cameraDistance = 5.25 + 0.12 * Math.cos(w * 2);
 
   const telemetry: TelemetrySnapshot = {
     timeSec: t,

@@ -35,9 +35,9 @@ function createStudioPMREM(renderer: THREE.WebGLRenderer): THREE.Texture {
     boxMeshes.push(mesh);
   };
 
-  addSoftbox(14, 14, new THREE.Color(2.4, 2.34, 2.24), [0, 7.5, 0], Math.PI / 2);
-  addSoftbox(10, 6, new THREE.Color(1.45, 1.48, 1.54), [-8, 3.2, 2]);
-  addSoftbox(10, 5, new THREE.Color(1.85, 1.72, 1.52), [8, 2.8, -3]);
+  addSoftbox(14, 14, new THREE.Color(1.65, 1.60, 1.52), [0, 7.5, 0], Math.PI / 2);
+  addSoftbox(10, 6, new THREE.Color(1.25, 1.28, 1.34), [-8, 3.2, 2]);
+  addSoftbox(10, 5, new THREE.Color(1.55, 1.44, 1.28), [8, 2.8, -3]);
   addSoftbox(24, 24, new THREE.Color('#cfc3b0'), [0, -3, 0], -Math.PI / 2);
 
   const rt = pmrem.fromScene(envScene, 0.04);
@@ -130,17 +130,17 @@ export function createStudioEnvironment(
 
   const shadowCatcher = new THREE.Mesh(
     new THREE.PlaneGeometry(10, 10),
-    new THREE.ShadowMaterial({ opacity: 0.2, color: new THREE.Color('#3b3024') })
+    new THREE.ShadowMaterial({ opacity: 0.24, color: new THREE.Color('#3b3024') })
   );
   shadowCatcher.rotation.x = -Math.PI / 2;
   shadowCatcher.position.y = 0.0015;
   shadowCatcher.receiveShadow = true;
   scene.add(shadowCatcher);
 
-  const hemi = new THREE.HemisphereLight('#fffaf2', '#cfc1ad', 0.72);
+  const hemi = new THREE.HemisphereLight('#fffaf2', '#c8b8a2', 0.62);
   scene.add(hemi);
 
-  const keyLight = new THREE.DirectionalLight('#fff7eb', 1.85);
+  const keyLight = new THREE.DirectionalLight('#fff7eb', 1.38);
   keyLight.position.set(3.8, 6.4, 3.6);
   keyLight.castShadow = true;
   keyLight.shadow.mapSize.set(2048, 2048);

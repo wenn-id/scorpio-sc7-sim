@@ -112,17 +112,19 @@ body,
 }
 
 .status-pill.online {
-  background: rgba(57, 229, 140, 0.13);
-  border-color: rgba(57, 229, 140, 0.45);
+  background: rgba(57, 229, 140, 0.16);
+  border-color: rgba(57, 229, 140, 0.55);
   color: var(--hud-green);
-  text-shadow: 0 0 10px rgba(57, 229, 140, 0.6);
+  text-shadow: 0 0 12px rgba(57, 229, 140, 0.75);
+  box-shadow: 0 0 12px rgba(57, 229, 140, 0.22);
 }
 
 .status-pill.standby {
-  background: rgba(255, 122, 41, 0.14);
-  border-color: rgba(255, 122, 41, 0.5);
+  background: rgba(255, 122, 41, 0.17);
+  border-color: rgba(255, 122, 41, 0.6);
   color: var(--hud-orange);
-  text-shadow: 0 0 10px rgba(255, 122, 41, 0.65);
+  text-shadow: 0 0 12px rgba(255, 122, 41, 0.8);
+  box-shadow: 0 0 12px rgba(255, 122, 41, 0.24);
 }
 
 .status-dot {

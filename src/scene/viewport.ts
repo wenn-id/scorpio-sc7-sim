@@ -12,7 +12,7 @@ export interface ViewportController {
   dispose(): void;
 }
 
-const TARGET = new THREE.Vector3(0, 0.72, 0.04);
+const TARGET = new THREE.Vector3(0, 0.80, -0.02);
 
 export function createViewport(
   container: HTMLElement,
@@ -85,7 +85,7 @@ export function createViewport(
     controls.target.copy(TARGET);
   }
 
-  setOrbitCamera(0.65, 0.36, 4.35);
+  setOrbitCamera(0.65, 0.34, 5.25);
 
   return {
     scene,
@@ -97,7 +97,7 @@ export function createViewport(
       renderer.render(scene, camera);
     },
     resetUserCamera() {
-      setOrbitCamera(0.65, 0.36, 4.35);
+      setOrbitCamera(0.65, 0.34, 5.25);
     },
     setInteractiveControlsEnabled(enabled: boolean) {
       controls.enabled = enabled;

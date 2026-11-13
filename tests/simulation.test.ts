@@ -78,4 +78,12 @@ describe('Scorpio SC-7 Periodic Simulation Loop', () => {
       }
     }
   });
+
+  it('arches tail upward over chassis and poises pincers above floor', () => {
+    const state = evaluateSimulation(0, 'idle');
+    const sumTailPitch = state.tailSegments.reduce((acc, seg) => acc + seg.pitch, 0);
+    expect(sumTailPitch).toBeGreaterThan(2.0);
+    expect(state.pincers[0].elbowPitch).toBeLessThan(0);
+    expect(state.cameraDistance).toBeGreaterThanOrEqual(5.0);
+  });
 });

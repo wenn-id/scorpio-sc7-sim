@@ -46,23 +46,23 @@ function createSc7DecalTexture(): THREE.CanvasTexture {
   canvas.height = 256;
   const ctx = canvas.getContext('2d')!;
 
-  ctx.fillStyle = '#f1ede5';
+  ctx.fillStyle = '#e8e2d7';
   ctx.fillRect(0, 0, 512, 256);
 
-  ctx.strokeStyle = 'rgba(42, 46, 54, 0.28)';
-  ctx.lineWidth = 4;
+  ctx.strokeStyle = 'rgba(32, 36, 44, 0.42)';
+  ctx.lineWidth = 5;
   ctx.strokeRect(12, 12, 488, 232);
 
   ctx.fillStyle = '#ea5b1b';
-  ctx.fillRect(28, 34, 148, 16);
-  ctx.fillRect(188, 34, 32, 16);
+  ctx.fillRect(28, 34, 148, 18);
+  ctx.fillRect(188, 34, 32, 18);
 
-  ctx.fillStyle = '#24272e';
+  ctx.fillStyle = '#1b1e25';
   ctx.font = '700 46px "Consolas", "Segoe UI", monospace';
   ctx.fillText('SCORPIO SC-7', 28, 130);
 
-  ctx.fillStyle = '#575d68';
-  ctx.font = '600 22px "Consolas", monospace';
+  ctx.fillStyle = '#404652';
+  ctx.font = '700 22px "Consolas", monospace';
   ctx.fillText('UNIT // 07-ALPHA  HYD-48V', 30, 176);
 
   ctx.fillStyle = '#ea5b1b';
@@ -79,13 +79,13 @@ export function createScorpioMaterials(): ScorpioMaterials {
   const decalTex = createSc7DecalTexture();
 
   const ceramicArmor = new THREE.MeshPhysicalMaterial({
-    color: new THREE.Color('#f1ede5'),
-    roughness: 0.42,
+    color: new THREE.Color('#e8e2d7'),
+    roughness: 0.48,
     metalness: 0.04,
-    clearcoat: 0.28,
-    clearcoatRoughness: 0.48,
+    clearcoat: 0.16,
+    clearcoatRoughness: 0.52,
     bumpMap: grain,
-    bumpScale: 0.0025
+    bumpScale: 0.003
   });
 
   const ceramicDarkTrim = new THREE.MeshPhysicalMaterial({
